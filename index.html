@@ -8,8 +8,8 @@
     :root{
         --bg1: #0a0a0f;
         --bg2: #111827;
-        --card: rgba(31, 41, 55, 0.85);
-        --card2: rgba(55, 65, 81, 0.75);
+        --card: rgba(31, 41, 55, 0.92);
+        --card2: rgba(55, 65, 81, 0.85);
         --gold: #fcd34d;
         --green: #4ade80;
         --red: #f87171;
@@ -17,7 +17,7 @@
         --purple: #a78bfa;
         --text: #f1f5f9;
         --muted: #cbd5e1;
-        --border: rgba(251, 191, 36, 0.15);
+        --border: rgba(251, 191, 36, 0.2);
         --accent: #fbbf24;
     }
 
@@ -33,12 +33,13 @@
         min-height:100vh;
         background:
             radial-gradient(circle at 25% 15%, rgba(251,191,36,0.25), transparent 50%),
-            radial-gradient(circle at 75% 85%, rgba(167,139,250,0.2), transparent 50%),
+            radial-gradient(circle at 75% 85%, rgba(167,139,250,0.22), transparent 50%),
             linear-gradient(145deg, var(--bg1), var(--bg2));
         color:var(--text);
         font-family: 'Inter', system-ui, sans-serif;
-        padding: 30px 20px;
+        padding: 20px 12px;
         overflow-x: hidden;
+        touch-action: manipulation;
     }
 
     .container{
@@ -49,85 +50,82 @@
     h1{
         text-align:center;
         font-family: 'Playfair Display', sans-serif;
-        font-size: clamp(2.4rem, 5vw, 3.2rem);
+        font-size: clamp(2.2rem, 6vw, 3.1rem);
         font-weight:900;
         background: linear-gradient(90deg, var(--gold), #fff, var(--gold));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
-        letter-spacing: -1px;
-        margin-bottom: 40px;
-        text-shadow: 0 10px 30px rgba(251,191,36,0.3);
+        letter-spacing: -1.5px;
+        margin-bottom: 35px;
+        text-shadow: 0 10px 30px rgba(251,191,36,0.35);
     }
 
     /* SLOT CARDS */
     .slots{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 28px;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
     }
 
     .slot{
         background: var(--card);
         backdrop-filter: blur(20px);
-        border: 1.5px solid var(--border);
+        border: 2px solid var(--border);
         border-radius: 32px;
-        padding: 40px 30px;
+        padding: 36px 24px;
         text-align: center;
         cursor: pointer;
         position: relative;
         overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 20px 50px -15px rgba(0,0,0,0.5);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 20px 50px -15px rgba(0,0,0,0.6);
     }
 
-    .slot:hover{
-        transform: translateY(-12px) scale(1.02);
-        box-shadow: 0 30px 70px -10px rgba(251,191,36,0.25);
-        border-color: var(--gold);
+    .slot:active{
+        transform: scale(0.94);
     }
 
     .slot::before{
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(135deg, rgba(251,191,36,0.12), transparent);
+        background: linear-gradient(135deg, rgba(251,191,36,0.18), transparent 60%);
         opacity: 0;
-        transition: opacity 0.4s;
+        transition: opacity 0.5s;
     }
 
-    .slot:hover::before{
+    .slot:active::before{
         opacity: 1;
     }
 
     .slot h2{
         color: var(--gold);
-        margin-bottom: 16px;
-        font-size: 1.65rem;
+        margin-bottom: 14px;
+        font-size: 1.7rem;
         font-weight: 800;
     }
 
     .slot p{
         color: var(--muted);
-        font-size: 1.05rem;
-        margin-bottom: 24px;
+        font-size: 1.1rem;
+        margin-bottom: 22px;
     }
 
     .deleteBtn{
-        margin-top: 10px;
+        margin-top: 12px;
         border: none;
         background: linear-gradient(135deg, #f87171, #ef4444);
         color: white;
-        padding: 12px 28px;
+        padding: 12px 32px;
         border-radius: 9999px;
         font-weight: 700;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 20px rgba(248, 113, 113, 0.3);
+        box-shadow: 0 8px 20px rgba(248, 113, 113, 0.35);
     }
 
-    .deleteBtn:hover{
-        transform: scale(1.05);
-        box-shadow: 0 12px 25px rgba(248, 113, 113, 0.4);
+    .deleteBtn:active{
+        transform: scale(0.92);
     }
 
     /* TOP BAR */
@@ -136,7 +134,7 @@
         justify-content: space-between;
         align-items: center;
         gap: 20px;
-        margin-bottom: 45px;
+        margin-bottom: 40px;
         flex-wrap: wrap;
     }
 
@@ -147,129 +145,131 @@
         padding: 14px 32px;
         border-radius: 9999px;
         font-weight: 800;
-        font-size: 1.05rem;
+        font-size: 1.1rem;
         cursor: pointer;
         transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
-        box-shadow: 0 10px 30px rgba(251, 191, 36, 0.35);
+        box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
         display: flex;
         align-items: center;
         gap: 10px;
     }
 
-    .backBtn:hover{
-        transform: translateY(-3px);
-        box-shadow: 0 15px 35px rgba(251, 191, 36, 0.45);
+    .backBtn:active{
+        transform: scale(0.95);
     }
 
     /* PLAYER CARDS */
     .playerGrid{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 28px;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
         margin-bottom: 45px;
     }
 
     .playerCard{
         background: var(--card);
         backdrop-filter: blur(20px);
-        border: 1.5px solid var(--border);
+        border: 2px solid var(--border);
         border-radius: 32px;
-        padding: 32px 24px;
+        padding: 32px 20px;
         text-align: center;
         position: relative;
         overflow: hidden;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 20px 50px -15px rgba(0,0,0,0.5);
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 20px 50px -15px rgba(0,0,0,0.6);
     }
 
-    .playerCard:hover{
-        transform: translateY(-12px) scale(1.02);
-        border-color: var(--gold);
-        box-shadow: 0 30px 70px -10px rgba(251,191,36,0.25);
+    .playerCard:active{
+        transform: scale(0.96);
     }
 
     .playerCard::before{
         content: "";
         position: absolute;
-        width: 260px;
-        height: 260px;
-        background: radial-gradient(circle, rgba(251,191,36,0.15) 20%, transparent 70%);
+        width: 240px;
+        height: 240px;
+        background: radial-gradient(circle, rgba(251,191,36,0.18) 20%, transparent 70%);
         border-radius: 50%;
-        top: -100px;
-        right: -100px;
+        top: -90px;
+        right: -90px;
         z-index: 0;
     }
 
     .token{
-        font-size: 5.2rem;
+        font-size: 5.5rem;
         line-height: 1;
-        margin-bottom: 18px;
-        filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
-        transition: transform 0.4s ease;
+        margin-bottom: 16px;
+        filter: drop-shadow(0 12px 25px rgba(0,0,0,0.5));
+        transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .playerCard:hover .token{
-        transform: scale(1.15) rotate(8deg);
+    .playerCard:active .token{
+        transform: scale(1.25) rotate(12deg);
     }
 
     .playerCard h2{
-        font-size: 1.55rem;
-        margin-bottom: 20px;
+        font-size: 1.6rem;
+        margin-bottom: 18px;
         font-weight: 700;
         color: var(--text);
     }
 
     .balance{
-        background: rgba(15, 23, 42, 0.9);
-        border: 2px solid rgba(74, 222, 128, 0.4);
+        background: rgba(15, 23, 42, 0.95);
+        border: 3px solid rgba(74, 222, 128, 0.5);
         border-radius: 24px;
-        padding: 22px 20px;
-        font-size: 2.1rem;
+        padding: 20px 16px;
+        font-size: 2.2rem;
         font-weight: 900;
         color: var(--green);
-        letter-spacing: -0.5px;
-        box-shadow: inset 0 4px 12px rgba(0,0,0,0.3);
+        letter-spacing: -0.8px;
+        box-shadow: inset 0 6px 16px rgba(0,0,0,0.4);
     }
 
     /* ACTIONS */
     .actions{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 20px;
-        max-width: 920px;
-        margin: 0 auto;
+        max-width: 960px;
+        margin: 0 auto 60px;
     }
 
     .actionBtn{
         border: none;
         border-radius: 28px;
-        padding: 26px 20px;
+        padding: 28px 20px;
         color: white;
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         font-weight: 800;
         cursor: pointer;
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 15px 35px rgba(0,0,0,0.4);
         position: relative;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .actionBtn:active{
+        transform: scale(0.92);
     }
 
     .actionBtn::before{
         content: '';
         position: absolute;
-        top: 0; left: -100%;
-        width: 40%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-        transition: 0.6s;
+        top: -50%;
+        left: -100%;
+        width: 50%;
+        height: 200%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+        transition: 0.7s;
     }
 
-    .actionBtn:hover::before{
+    .actionBtn:active::before{
         left: 200%;
-    }
-
-    .actionBtn:hover{
-        transform: translateY(-8px);
     }
 
     .go{
@@ -288,17 +288,17 @@
         background: linear-gradient(135deg, #a78bfa, #8b5cf6);
     }
 
-    /* POPUP */
+    /* MODALS */
     .overlay{
         position: fixed;
         inset: 0;
-        background: rgba(0,0,0,0.8);
+        background: rgba(0,0,0,0.85);
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 9999;
-        backdrop-filter: blur(12px);
-        animation: fadeIn 0.3s ease;
+        backdrop-filter: blur(14px);
+        animation: fadeIn 0.3s ease forwards;
     }
 
     @keyframes fadeIn {
@@ -307,20 +307,22 @@
     }
 
     .modal{
-        width: min(620px, 92%);
-        background: rgba(31, 41, 55, 0.95);
-        backdrop-filter: blur(24px);
-        border: 1.5px solid var(--border);
+        width: min(720px, 94%);
+        max-height: 90vh;
+        overflow-y: auto;
+        background: rgba(31, 41, 55, 0.96);
+        backdrop-filter: blur(28px);
+        border: 2px solid var(--border);
         border-radius: 36px;
-        padding: 40px 36px;
-        box-shadow: 0 30px 80px rgba(0,0,0,0.6);
-        animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        padding: 36px 28px;
+        box-shadow: 0 30px 90px rgba(0,0,0,0.7);
+        animation: popIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
 
     @keyframes popIn {
         from {
             opacity: 0;
-            transform: scale(0.7) translateY(40px);
+            transform: scale(0.75) translateY(60px);
         }
         to {
             opacity: 1;
@@ -331,99 +333,193 @@
     .modal h2{
         text-align: center;
         color: var(--gold);
-        margin-bottom: 32px;
-        font-size: 2rem;
+        margin-bottom: 24px;
+        font-size: 2.1rem;
         font-weight: 800;
+    }
+
+    .number-input-container {
+        margin: 24px 0 32px;
+        text-align: center;
+    }
+
+    .number-input-label {
+        display: block;
+        color: var(--muted);
+        font-size: 1.1rem;
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+
+    .number-input {
+        background: rgba(15, 23, 42, 0.9);
+        border: 3px solid var(--gold);
+        color: white;
+        font-size: 2.8rem;
+        font-weight: 900;
+        width: 180px;
+        height: 110px;
+        text-align: center;
+        border-radius: 24px;
+        box-shadow: 0 10px 30px rgba(251,191,36,0.3);
+        transition: all 0.3s ease;
+    }
+
+    .number-input:focus {
+        outline: none;
+        border-color: #fff;
+        box-shadow: 0 0 0 6px rgba(251,191,36,0.25);
+        transform: scale(1.05);
+    }
+
+    .quick-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+        gap: 14px;
+        margin-top: 28px;
+    }
+
+    .quick-btn {
+        background: var(--card2);
+        border: 2px solid var(--border);
+        color: white;
+        padding: 18px 12px;
+        border-radius: 20px;
+        font-size: 1.1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .quick-btn:active {
+        transform: scale(0.92);
+        background: var(--gold);
+        color: #111827;
+    }
+
+    .propertyGrid{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+    }
+
+    .propCard{
+        background: var(--card2);
+        border: 2px solid var(--border);
+        border-radius: 24px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-align: left;
+    }
+
+    .propCard:active{
+        transform: scale(0.96);
+        border-color: var(--gold);
+    }
+
+    .propCard h4{
+        font-size: 1.2rem;
+        margin-bottom: 8px;
+        color: white;
+    }
+
+    .propPrice{
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--gold);
+    }
+
+    .rentLevel{
+        font-size: 0.95rem;
+        color: var(--muted);
+        margin-top: 6px;
     }
 
     .selectGrid{
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 18px;
     }
 
     .selectBtn{
         background: var(--card2);
-        border: 1.5px solid var(--border);
+        border: 2px solid var(--border);
         color: white;
         border-radius: 26px;
-        padding: 28px 16px;
-        font-size: 1.1rem;
+        padding: 24px 12px;
+        font-size: 1.05rem;
         font-weight: 700;
         cursor: pointer;
-        transition: all 0.35s ease;
+        transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 10px;
     }
 
-    .selectBtn:hover{
-        transform: translateY(-6px) scale(1.04);
+    .selectBtn:active{
+        transform: scale(0.92);
         border-color: var(--gold);
-        box-shadow: 0 20px 40px rgba(251,191,36,0.2);
     }
 
     .selectBtn span{
-        font-size: 4.2rem;
+        font-size: 3.8rem;
         transition: transform 0.4s ease;
-    }
-
-    .selectBtn:hover span{
-        transform: scale(1.2);
     }
 
     .cancelBtn{
         width: 100%;
-        margin-top: 24px;
+        margin-top: 28px;
         border: none;
         background: linear-gradient(135deg, #f87171, #ef4444);
         color: white;
         padding: 18px;
         border-radius: 9999px;
         font-weight: 700;
-        font-size: 1.1rem;
+        font-size: 1.15rem;
         cursor: pointer;
         transition: all 0.3s ease;
     }
 
-    .cancelBtn:hover{
-        transform: scale(1.02);
-    }
-
-    /* ACTIVE STATES */
-    .slot:active,
-    .playerCard:active,
-    .actionBtn:active,
-    .backBtn:active,
-    .deleteBtn:active,
-    .selectBtn:active,
     .cancelBtn:active{
         transform: scale(0.95);
     }
 
-    /* RESPONSIVE */
-    @media(max-width: 768px){
-        body{
-            padding: 20px 12px;
-        }
+    .successToast{
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--green);
+        color: #111827;
+        padding: 16px 32px;
+        border-radius: 9999px;
+        font-weight: 700;
+        box-shadow: 0 15px 35px rgba(74, 222, 128, 0.4);
+        z-index: 10000;
+        animation: toastPop 0.4s ease forwards;
+        white-space: nowrap;
+    }
 
-        .topBar{
-            flex-direction: column;
-            text-align: center;
-        }
+    @keyframes toastPop {
+        0% { transform: translate(-50%, 80px); opacity: 0; }
+        100% { transform: translateX(-50%); opacity: 1; }
+    }
 
-        .playerGrid,
-        .actions{
-            grid-template-columns: 1fr;
-        }
+    .bubble {
+        position: absolute;
+        background: rgba(251, 191, 36, 0.3);
+        border-radius: 50%;
+        pointer-events: none;
+        animation: bubbleRise 1.2s ease-out forwards;
+        z-index: 10;
+    }
 
-        .token{
-            font-size: 4.2rem;
-        }
-
-        .balance{
-            font-size: 1.75rem;
+    @keyframes bubbleRise {
+        to {
+            opacity: 0;
+            transform: translateY(-180px) scale(0.6);
         }
     }
 </style>
@@ -439,7 +535,6 @@ const TOKENS = [
     {name:"Car",emoji:"🚗"},
     {name:"Helicopter",emoji:"🚁"}
 ];
-
 
 const PROPERTY_DATA = {
   1: { name: "Old Kent Road", price: 60, rents: [70,130,220,370,750] },
@@ -470,63 +565,50 @@ let currentSlot = null;
 let game = null;
 
 function saveGame(){
-    localStorage.setItem(
-        "monopoly_slot_" + currentSlot,
-        JSON.stringify(game)
-    );
+    localStorage.setItem("monopoly_slot_" + currentSlot, JSON.stringify(game));
+}
+
+function createBubble(x, y) {
+    const bubble = document.createElement('div');
+    bubble.className = 'bubble';
+    const size = Math.random() * 18 + 10;
+    bubble.style.width = `${size}px`;
+    bubble.style.height = `${size}px`;
+    bubble.style.left = `${x}px`;
+    bubble.style.top = `${y}px`;
+    bubble.style.opacity = Math.random() * 0.6 + 0.4;
+    document.body.appendChild(bubble);
+    setTimeout(() => bubble.remove(), 1500);
 }
 
 function loadSlots(){
     const app = document.getElementById("app");
-
-    let html = `
-        <h1>🎲 Monopoly Banking</h1>
-        <div class="slots">
-    `;
+    let html = `<h1>🎲 Monopoly Banking</h1><div class="slots">`;
 
     for(let i=1;i<5;i++){
-        const data = localStorage.getItem(
-            "monopoly_slot_" + i
-        );
-
+        const data = localStorage.getItem("monopoly_slot_" + i);
         html += `
             <div class="slot" onclick="openSlot(${i})">
                 <h2>Save Slot ${i}</h2>
-                <p>${data ? "Saved Game" : "Empty Slot"}</p>
-
-                ${
-                    data
-                    ? `
-                    <button class="deleteBtn"
-                    onclick="event.stopPropagation();deleteSlot(${i})">
-                    🗑️ Delete
-                    </button>
-                    `
-                    : ""
-                }
+                <p>${data ? "💾 Game Saved" : "Empty Slot"}</p>
+                ${data ? `<button class="deleteBtn" onclick="event.stopPropagation();deleteSlot(${i})">🗑️ Delete</button>` : ""}
             </div>
         `;
     }
-
     html += "</div>";
     app.innerHTML = html;
 }
 
 function deleteSlot(slot){
-    if(confirm("Delete this save?")){
-        localStorage.removeItem(
-            "monopoly_slot_" + slot
-        );
+    if(confirm("Delete this save slot?")){
+        localStorage.removeItem("monopoly_slot_" + slot);
         loadSlots();
     }
 }
 
 function openSlot(slot){
     currentSlot = slot;
-
-    const saved = localStorage.getItem(
-        "monopoly_slot_" + slot
-    );
+    const saved = localStorage.getItem("monopoly_slot_" + slot);
 
     if(saved){
         game = JSON.parse(saved);
@@ -534,31 +616,19 @@ function openSlot(slot){
         return;
     }
 
-    let players = parseInt(
-        prompt("How many players? (2-4)")
-    );
-
-    if(
-        isNaN(players) ||
-        players < 2 ||
-        players > 4
-    ){
+    let playersCount = parseInt(prompt("How many players? (2-4)"));
+    if(isNaN(playersCount) || playersCount < 2 || playersCount > 4){
+        alert("Please choose between 2 and 4 players.");
         return;
     }
 
-    game = {
-        players:[],
-        properties:{}
-    };
+    game = { players:[], properties:{} };
 
     for(let i=1;i<=22;i++){
-        game.properties[i]={
-            owner:null,
-            level:1
-        };
+        game.properties[i] = { owner:null, level:1 };
     }
 
-    for(let i=0;i<players;i++){
+    for(let i=0;i<playersCount;i++){
         game.players.push({
             name:TOKENS[i].name,
             emoji:TOKENS[i].emoji,
@@ -571,212 +641,308 @@ function openSlot(slot){
 }
 
 function renderGame(){
-
     const app = document.getElementById("app");
-
     let html = `
         <div class="topBar">
             <h1>🎲 Monopoly Banking</h1>
-
-            <button class="backBtn"
-            onclick="loadSlots()">
-                ← Back to Slots
-            </button>
+            <button class="backBtn" onclick="loadSlots()">← Back to Slots</button>
         </div>
-
         <div class="playerGrid">
     `;
 
-    game.players.forEach(player => {
-
+    game.players.forEach((player, index) => {
         html += `
-            <div class="playerCard">
-
-                <div class="token">
-                    ${player.emoji}
-                </div>
-
+            <div class="playerCard" onclick="showPlayerInfo(${index})">
+                <div class="token">${player.emoji}</div>
                 <h2>${player.name}</h2>
-
-                <div class="balance">
-                    $${player.balance.toLocaleString()}
-                </div>
-
+                <div class="balance">$${player.balance.toLocaleString()}</div>
             </div>
         `;
     });
 
     html += `
         </div>
-
         <div class="actions">
-
-            <button class="actionBtn go"
-            onclick="openPlayerPopup('go')">
-                🏁 Pass GO +$200
-            </button>
-
-            <button class="actionBtn jail"
-            onclick="openPlayerPopup('jail')">
-                🚔 Go To Jail -$50
-            </button>
-
-            <button class="actionBtn buy"
-            onclick="openPlayerPopup('buy')">
-                🏠 Buy Property
-            </button>
-
-            <button class="actionBtn rent"
-            onclick="openPlayerPopup('rent')">
-                💸 Pay Rent
-            </button>
-
+            <button class="actionBtn go" onclick="handleAction('go')"><span style="font-size:2.2rem">🏁</span>Pass GO<br>+ $200</button>
+            <button class="actionBtn jail" onclick="handleAction('jail')"><span style="font-size:2.2rem">🚔</span>Go To Jail<br>- $50</button>
+            <button class="actionBtn buy" onclick="handleAction('buy')"><span style="font-size:2.2rem">🏠</span>Buy Property</button>
+            <button class="actionBtn rent" onclick="handleAction('rent')"><span style="font-size:2.2rem">💸</span>Pay Rent</button>
         </div>
     `;
-
     app.innerHTML = html;
 }
 
-function openPlayerPopup(action){
+function showToast(message, isError = false){
+    const toast = document.createElement('div');
+    toast.className = 'successToast';
+    toast.style.background = isError ? '#f87171' : 'var(--green)';
+    toast.style.color = isError ? 'white' : '#111827';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    setTimeout(() => {
+        toast.style.transition = 'all 0.4s ease';
+        toast.style.opacity = '0';
+        toast.style.transform = 'translate(-50%, 60px)';
+        setTimeout(() => toast.remove(), 400);
+    }, 2400);
+}
 
-    let html = `
-        <div class="overlay" id="overlay">
-            <div class="modal">
+function handleAction(action){
+    if(action === 'go' || action === 'jail'){
+        openPlayerSelector(action);
+    } else if(action === 'buy'){
+        showBuyModal();
+    } else if(action === 'rent'){
+        showRentModal();
+    }
+}
 
-                <h2>Select Player</h2>
-
-                <div class="selectGrid">
-    `;
-
-    game.players.forEach((player,index)=>{
-
-        html += `
-            <button class="selectBtn"
-            onclick="doAction('${action}',${index})">
-
-                <span>${player.emoji}</span>
-                ${player.name}
-
-            </button>
-        `;
+function openPlayerSelector(action){
+    let html = `<div class="overlay" id="overlay"><div class="modal"><h2>Select Player</h2><div class="selectGrid">`;
+    game.players.forEach((player, index) => {
+        html += `<button class="selectBtn" onclick="performSimpleAction('${action}', ${index})"><span>${player.emoji}</span>${player.name}</button>`;
     });
-
-    html += `
-                </div>
-
-                <button class="cancelBtn"
-                onclick="closePopup()">
-                    Cancel
-                </button>
-
-            </div>
-        </div>
-    `;
-
-    document.body.insertAdjacentHTML(
-        "beforeend",
-        html
-    );
+    html += `</div><button class="cancelBtn" onclick="closePopup()">Cancel</button></div></div>`;
+    document.body.insertAdjacentHTML("beforeend", html);
 }
 
-function closePopup(){
-    const overlay =
-        document.getElementById("overlay");
-
-    if(overlay){
-        overlay.remove();
-    }
-}
-
-
-function doAction(action,index){
-
-    if(action==="go"){
+function performSimpleAction(action, index){
+    if(action === "go"){
         game.players[index].balance += 200;
-    }
-
-    if(action==="jail"){
+        showToast(`${game.players[index].name} collected $200!`);
+    } else if(action === "jail"){
         game.players[index].balance -= 50;
+        showToast(`${game.players[index].name} paid $50`, true);
     }
-
-    if(action==="buy"){
-        const propertyNo = parseInt(prompt("Property number (1-22)"));
-
-        if(isNaN(propertyNo) || !PROPERTY_DATA[propertyNo]){
-            alert("Invalid property number.");
-            return;
-        }
-
-        const property = game.properties[propertyNo];
-        const data = PROPERTY_DATA[propertyNo];
-
-        if(property.owner !== null){
-            alert(data.name + " is already owned.");
-            return;
-        }
-
-        if(game.players[index].balance < data.price){
-            alert("Not enough money to buy " + data.name);
-            return;
-        }
-
-        if(confirm(`Buy ${data.name} for $${data.price}?`)){
-            game.players[index].balance -= data.price;
-            property.owner = index;
-            property.level = 1;
-            alert(`${game.players[index].name} bought ${data.name}`);
-        }
-    }
-
-    if(action==="rent"){
-        const propertyNo = parseInt(prompt("Property number (1-22)"));
-
-        if(isNaN(propertyNo) || !PROPERTY_DATA[propertyNo]){
-            alert("Invalid property number.");
-            return;
-        }
-
-        const property = game.properties[propertyNo];
-        const data = PROPERTY_DATA[propertyNo];
-
-        if(property.owner === null){
-            alert(data.name + " has not been purchased yet.");
-            return;
-        }
-
-        const owner = property.owner;
-        const level = property.level;
-        const rent = data.rents[level - 1];
-
-        if(owner !== index){
-            game.players[index].balance -= rent;
-            game.players[owner].balance += rent;
-
-            alert(
-                `${game.players[index].name} paid $${rent} to ${game.players[owner].name} for ${data.name}`
-            );
-        } else {
-            alert(
-                `${game.players[index].name} owns ${data.name}. No rent paid.`
-            );
-        }
-
-        if(property.level < 5){
-            property.level++;
-        }
-
-        alert(
-            `${data.name} is now at Rent Level ${property.level}`
-        );
-    }
-
     saveGame();
     closePopup();
     renderGame();
 }
 
+function showBuyModal(){
+    let html = `
+        <div class="overlay" id="overlay">
+            <div class="modal">
+                <h2>Buy Property</h2>
+                <div class="quick-grid">
+    `;
 
+    for(let i=1; i<=22; i+=4){
+        for(let j=0; j<4 && (i+j)<=22; j++){
+            const num = i+j;
+            html += `<button class="quick-btn" onclick="quickBuy(${num})">${num} - ${PROPERTY_DATA[num].name}</button>`;
+        }
+    }
+
+    html += `
+                </div>
+                <button class="cancelBtn" onclick="closePopup()">Close</button>
+            </div>
+        </div>
+    `;
+
+    document.body.insertAdjacentHTML("beforeend", html);
+    setTimeout(() => {
+        const input = document.getElementById('propInput');
+        if(input) input.focus();
+    }, 300);
+}
+
+function quickBuy(num = null){
+    const input = document.getElementById('propInput');
+    let propNo = num !== null ? num : parseInt(input ? input.value : 0);
+
+    if(isNaN(propNo) || propNo < 1 || propNo > 22){
+        showToast("Invalid property number!", true);
+        return;
+    }
+
+    if(game.properties[propNo].owner !== null){
+        showToast(`${PROPERTY_DATA[propNo].name} is already owned!`, true);
+        return;
+    }
+
+    closePopup();
+    selectBuyerForBuy(propNo);
+}
+
+function selectBuyerForBuy(propNo){
+    let html = `
+        <div class="overlay" id="overlay">
+            <div class="modal">
+                <h2>Who is buying?</h2>
+                <div class="selectGrid">
+    `;
+
+    game.players.forEach((player, index) => {
+        html += `
+            <button class="selectBtn" onclick="confirmBuy(${propNo}, ${index})">
+                <span>${player.emoji}</span>
+                ${player.name}
+            </button>
+        `;
+    });
+
+    html += `</div><button class="cancelBtn" onclick="closePopup()">Cancel</button></div></div>`;
+    document.body.insertAdjacentHTML("beforeend", html);
+}
+
+function confirmBuy(propNo, playerIndex){
+    const property = game.properties[propNo];
+    const data = PROPERTY_DATA[propNo];
+
+    if(game.players[playerIndex].balance < data.price){
+        showToast("Not enough money!", true);
+        closePopup();
+        return;
+    }
+
+    if(confirm(`Buy ${data.name} for $${data.price}?`)){
+        game.players[playerIndex].balance -= data.price;
+        property.owner = playerIndex;
+        property.level = 1;
+        showToast(`${game.players[playerIndex].name} bought ${data.name}!`);
+        saveGame();
+        closePopup();
+        renderGame();
+    } else {
+        closePopup();
+    }
+}
+
+function showRentModal(){
+    let html = `
+        <div class="overlay" id="overlay">
+            <div class="modal">
+                <h2>Pay Rent</h2>
+                
+                <div class="number-input-container">
+                    <label class="number-input-label">Enter Property Number (1-22)</label>
+                    <input type="number" id="rentInput" class="number-input" placeholder="00" min="1" max="22" onkeypress="if(event.key==='Enter') quickRent()">
+                </div>
+
+                <div style="text-align:center; margin:20px 0; color:var(--muted); font-size:1.1rem;">— or select below —</div>
+
+                <div class="propertyGrid">
+    `;
+
+    let hasRents = false;
+    for(let i = 1; i <= 22; i++){
+        const prop = game.properties[i];
+        if(prop.owner === null) continue;
+        hasRents = true;
+        const data = PROPERTY_DATA[i];
+        const ownerName = game.players[prop.owner].name;
+        const rent = data.rents[prop.level - 1];
+
+        html += `
+            <div class="propCard" onclick="quickRent(${i})">
+                <h4>${data.name}</h4>
+                <div style="font-size:1rem;color:var(--muted)">Owner: ${ownerName}</div>
+                <div class="propPrice">Rent: $${rent}</div>
+                <div class="rentLevel">Level ${prop.level}</div>
+            </div>
+        `;
+    }
+
+    if(!hasRents){
+        html += `<p style="grid-column:1/-1;text-align:center;padding:40px;color:var(--muted);">No properties owned yet.</p>`;
+    }
+
+    html += `</div><button class="cancelBtn" onclick="closePopup()">Close</button></div></div>`;
+    document.body.insertAdjacentHTML("beforeend", html);
+    setTimeout(() => {
+        const input = document.getElementById('rentInput');
+        if(input) input.focus();
+    }, 300);
+}
+
+function quickRent(num = null){
+    const input = document.getElementById('rentInput');
+    let propNo = num !== null ? num : parseInt(input ? input.value : 0);
+
+    if(isNaN(propNo) || propNo < 1 || propNo > 22){
+        showToast("Invalid property number!", true);
+        return;
+    }
+
+    const property = game.properties[propNo];
+    if(property.owner === null){
+        showToast("This property hasn't been purchased yet!", true);
+        return;
+    }
+
+    closePopup();
+    selectPayerForRent(propNo);
+}
+
+function selectPayerForRent(propNo){
+    let html = `
+        <div class="overlay" id="overlay">
+            <div class="modal">
+                <h2>Who is paying rent?</h2>
+                <div class="selectGrid">
+    `;
+
+    game.players.forEach((player, index) => {
+        html += `
+            <button class="selectBtn" onclick="confirmRent(${propNo}, ${index})">
+                <span>${player.emoji}</span>
+                ${player.name}
+            </button>
+        `;
+    });
+
+    html += `</div><button class="cancelBtn" onclick="closePopup()">Cancel</button></div></div>`;
+    document.body.insertAdjacentHTML("beforeend", html);
+}
+
+function confirmRent(propNo, payerIndex){
+    const property = game.properties[propNo];
+    const data = PROPERTY_DATA[propNo];
+    const ownerIndex = property.owner;
+    const rent = data.rents[property.level - 1];
+
+    if(payerIndex === ownerIndex){
+        showToast("You own this property!", true);
+        closePopup();
+        return;
+    }
+
+    if(game.players[payerIndex].balance < rent){
+        showToast("Not enough money to pay rent!", true);
+        closePopup();
+        return;
+    }
+
+    game.players[payerIndex].balance -= rent;
+    game.players[ownerIndex].balance += rent;
+
+    if(property.level < 5){
+        property.level++;
+    }
+
+    showToast(`${game.players[payerIndex].name} paid $${rent} to ${game.players[ownerIndex].name}`);
+    saveGame();
+    closePopup();
+    renderGame();
+}
+
+function closePopup(){
+    const overlays = document.querySelectorAll('.overlay');
+    overlays.forEach(ov => ov.remove());
+}
+
+function showPlayerInfo(index){
+    showToast(`${game.players[index].name} has $${game.players[index].balance}`);
+}
+
+// Initialize
 loadSlots();
+
+document.addEventListener('click', (e) => {
+    if(Math.random() > 0.65) createBubble(e.clientX, e.clientY);
+});
 </script>
 
 </body>
